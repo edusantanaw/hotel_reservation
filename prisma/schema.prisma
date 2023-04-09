@@ -18,6 +18,24 @@ model Costumer {
   phoneNumber String?
   email       String?
   Reservation Reservation[]
+
+  @@map("costumer")
+}
+
+model Hotel {
+  id        String @id
+  roomCount Int
+  name      String
+  localtion String
+  Room      Room[]
+}
+
+model Room {
+  id          String        @id
+  hotel       Hotel         @relation(fields: [hotelId], references: [id])
+  number      Int
+  hotelId     String
+  Reservation Reservation[]
 }
 
 model Reservation {
@@ -26,7 +44,10 @@ model Reservation {
   guestId       String
   arrivalDate   DateTime
   departureDate DateTime
-  roomCount     Int
+  room          Room     @relation(fields: [roomId], references: [id])
+  roomId        String
   totalCost     Float
   status        String
+
+  @@map("reservation")
 }
