@@ -24,9 +24,9 @@ model Costumer {
 
 model Hotel {
   id        String @id
-  roomCount Int
   name      String
-  localtion String
+  city      String
+  state     String
   Room      Room[]
 }
 
