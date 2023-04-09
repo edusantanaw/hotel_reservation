@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Costumer {
+  id          String        @id
+  name        String
+  cpf         String
+  password    String
+  phoneNumber String?
+  email       String?
+  Reservation Reservation[]
+}
+
+model Reservation {
+  id            String   @id
+  costumer      Costumer @relation(fields: [guestId], references: [id])
+  guestId       String
+  arrivalDate   DateTime
+  departureDate DateTime
+  roomCount     Int
+  totalCost     Float
+  status        String
+}
