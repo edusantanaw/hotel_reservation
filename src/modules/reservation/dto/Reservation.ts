@@ -4,7 +4,7 @@ export class ReservationDto {
   @IsNotEmpty()
   roomId: string;
   @IsNotEmpty()
-  guesId: string;
+  guestId: string;
   @IsNotEmpty()
   totalCost: number;
   @IsNotEmpty()
@@ -12,5 +12,5 @@ export class ReservationDto {
   @IsNotEmpty()
   arrivalDate: string;
   @IsNotEmpty()
-  departureDAte: string;
+  departureDate: string;
 }
