@@ -14,4 +14,13 @@ export class HotelService {
     });
     return createdHotel;
   }
+  public async loadById(id: string) {
+    const hotel = this.prismaService.hotel.findFirst({ where: { id } });
+    return hotel;
+  }
+
+  public async loadAll() {
+    const hotels = await this.prismaService.hotel.findMany();
+    return hotels;
+  }
 }
